@@ -1,0 +1,88 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "API Documentation"
+  description: "Operations pertaining to your API"
+basePath: "/"
+tags:
+  - name: "API"
+    description: "Operations pertaining to your API"
+schemes:
+  - "http"
+paths:
+  /:
+    get:
+      summary: "Get root endpoint"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "string"
+  /dataQuery:
+    post:
+      summary: "Get data based on query"
+      parameters:
+        - name: "start"
+          in: "query"
+          description: "Start date"
+          required: true
+          type: "string"
+        - name: "end"
+          in: "query"
+          description: "End date"
+          required: true
+          type: "string"
+        - name: "text"
+          in: "query"
+          description: "Search text"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successfully retrieved data"
+          schema:
+            type: "string"
+        400:
+          description: "Bad request"
+  /login:
+    post:
+      summary: "Login with credentials"
+      parameters:
+        - name: "loginname"
+          in: "query"
+          description: "Login name"
+          required: true
+          type: "string"
+        - name: "passwort"
+          in: "query"
+          description: "Password"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successfully logged in"
+          schema:
+            type: "string"
+        401:
+          description: "Unauthorized"
+  /registration:
+    post:
+      summary: "Register with credentials"
+      parameters:
+        - name: "loginname"
+          in: "query"
+          description: "Login name"
+          required: true
+          type: "string"
+        - name: "passwort"
+          in: "query"
+          description: "Password"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successfully registered"
+          schema:
+            type: "string"
+        400:
+          description: "Bad request"
